@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <section id="contacto" class="contacto">
+      <div class="container">
+        <h2 class="section-title">CONTACTO</h2>
+        <div class="section-sub">Nos gustaría conocerle y explorar nuevas oportunidades de colaboración. Si desea obtener más información sobre nuestro trabajo, proponer una alianza, apoyar nuestras iniciativas o ponerse en contacto con nuestro equipo, estaremos encantados de atenderle. En CEPOCS creemos que el diálogo, la cooperación y el intercambio de experiencias son fundamentales para construir comunidades más fuertes, inclusivas y sostenibles. No dude en escribirnos; estaremos a su disposición para responder a sus consultas y seguir tejiendo redes de desarrollo y transformación social.</div>
+        
+        <!-- SECCIÓN DE CONTACTO VISUAL -->
+        <div class="contact-grid-custom">
+          <div class="contact-card-custom">
+            <i class="fas fa-envelope"></i>
+            <h3>Correo Electrónico</h3>
+            <p><strong>cepocscordillera@gmail.com</strong></p>
+            <p><strong>cepocscordillera@hotmail.com</strong></p>
+          </div>
+          <div class="contact-card-custom">
+            <i class="fas fa-phone-alt"></i>
+            <h3>Llámanos o escríbenos</h3>
+            <p><strong>+1 809 710 7816</strong></p>
+            <a href="https://wa.me/18097107816" target="_blank" class="btn-wa">Escríbenos al WhatsApp</a>
+          </div>
+          <div class="contact-card-custom">
+            <i class="fas fa-share-alt"></i>
+            <h3>Síguenos</h3>
+            <div class="social-links-custom">
+              <a href="https://www.facebook.com/cepocs.cepocs/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/cepocs/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN DE MAPAS AL FINAL -->
+        <div class="mapas-container" style="margin-top: 60px;">
+          <div class="mapa-card">
+            <h4>📌 OFICINA DE ADMINISTRACIÓN</h4>
+            <iframe src="https://maps.google.com/maps?q=Calle%20Santa%20Ana%2074%20Navarrete%20Santiago%20Rep%C3%BAblica%20Dominicana&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy"></iframe>
+            <p>C/ Santa Ana 74, Navarrete, República Dominicana</p>
+          </div>
+          <div class="mapa-card">
+            <h4>📍 PUNTO LOGÍSTICO EN TERRENO</h4>
+            <iframe src="https://maps.google.com/maps?q=Carretera%20Los%20Llanos%20Altamira%2051000%20Rep%C3%BAblica%20Dominicana&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy"></iframe>
+            <p>Carretera Los Llanos, Altamira, República Dominicana</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hovers sutiles */
+  .contact-card-custom {
+    transition: all 0.25s ease;
+  }
+  
+  .contact-card-custom:hover {
+    transform: translateY(-4px);
+  }
+  
+  /* Botón WhatsApp mejorado */
+  .btn-wa {
+    background: #25D366;
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: inline-block;
+    font-size: 0.9rem;
+  }
+  
+  .btn-wa:hover {
+    background: #20ba61;
+    transform: translateY(-2px);
+  }
+  
+  /* Redes sociales */
+  .social-links-custom a {
+    transition: all 0.25s ease;
+    color: var(--verde);
+    font-size: 1.5rem;
+  }
+  
+  .social-links-custom a:hover {
+    color: var(--naranja);
+    transform: scale(1.1);
+  }
+  
+  /* Mapas */
+  .mapa-card {
+    transition: all 0.25s ease;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e2e8e4;
+  }
+  
+  .mapa-card h4 {
+    background: linear-gradient(135deg, var(--verde), #0d3a2b);
+    color: white;
+    padding: 1rem 1.2rem;
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+  
+  .mapa-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+  }
+  
+  .mapa-card p {
+    padding: 1rem 1.2rem;
+    margin: 0;
+    background: #f9faf8;
+    color: var(--verde);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: left;
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Noticias y Actualidad | CEPOCS">
+  <main class="news-page">
+    <div class="container" id="seccion-principal-noticias">
+      
+      <h1 class="section-title">NOTICIAS Y ACTUALIDAD</h1>
+      <p class="section-sub">
+        Explora las últimas novedades, crónicas de terreno y avances socioproductivos del equipo de CEPOCS en la región.
+      </p>
+
+      <!-- Pestañas -->
+      <div class="news-tabs">
+        <button id="tab-btn-propias" class="tab-btn active" onclick="switchTab('propias')">Nuestras Noticias</button>
+        <button id="tab-btn-medios" class="tab-btn" onclick="switchTab('medios')">CEPOCS en los Medios</button>
+      </div>
+
+      <div class="news-container">
+        
+        <!-- PANEL: NOTICIAS PROPIAS -->
+        <div id="panel-propias" class="news-content-panel active">
+          <p class="panel-desc">Entérate de nuestras actividades, talleres e historias directamente.</p>
+          <script src="https://elfsightcdn.com/platform.js" async></script>
+          <div class="elfsight-app-f40a2137-09d9-40ea-bbff-395e0f30d965" data-elfsight-app-lazy></div>
+        </div>
+
+        <!-- PANEL: CEPOCS EN LOS MEDIOS -->
+        <div id="panel-medios" class="news-content-panel">
+          <p class="panel-desc">Reportajes especiales y cobertura de la prensa nacional e internacional.</p>
+          
+          <div class="prensa-lista">
+            
+            <!-- NOTICIA 1: elDinero -->
+            <a href="https://eldinero.com.do/227124/mujeres-del-campo-dominicano-apuestan-por-fruta-y-cafe-para-un-futuro-mejor/" target="_blank" rel="noopener noreferrer" class="prensa-item">
+              <div class="prensa-header">
+                <span class="media-badge badge-eldinero">elDinero</span>
+                <span class="date"><i class="far fa-calendar-alt"></i> 23 Abr, 2023</span>
+              </div>
+              <h3>Mujeres del campo dominicano apuestan por fruta y café para un futuro mejor</h3>
+              <p>El reportaje destaca cómo las mujeres rurales de la Cordillera Septentrional transforman la agricultura local mediante cultivos sostenibles apoyados por CEPOCS.</p>
+              <span class="link-text">Leer artículo en el diario <i class="fas fa-external-link-alt"></i></span>
+            </a>
+
+            <!-- NOTICIA 2: Efeminista -->
+            <a href="https://efeminista.com/campesinas-republica-dominicana/" target="_blank" rel="noopener noreferrer" class="prensa-item">
+              <div class="prensa-header">
+                <span class="media-badge badge-efeminista">Efeminista (EFE)</span>
+                <span class="date"><i class="far fa-calendar-alt"></i> 24 Abr, 2023</span>
+              </div>
+              <h3>Las campesinas dominicanas que combaten el cambio climático con café</h3>
+              <p>Una mirada profunda al liderazgo femenino y el empoderamiento económico de las productoras rurales en alianza estratégica con los proyectos de CEPOCS.</p>
+              <span class="link-text">Leer artículo en el diario <i class="fas fa-external-link-alt"></i></span>
+            </a>
+
+            <!-- NOTICIA 3: Listín Diario -->
+            <a href="https://listindiario.com/la-vida/2023/04/23/772859/mujeres-del-campo-dominicano-apuestan-por-fruta-y-cafe-para-un-futuro-mejor.html" target="_blank" rel="noopener noreferrer" class="prensa-item">
+              <div class="prensa-header">
+                <span class="media-badge badge-listin">Listín Diario</span>
+                <span class="date"><i class="far fa-calendar-alt"></i> 23 Abr, 2023</span>
+              </div>
+              <h3>Mujeres del campo dominicano apuestan por fruta y café para un futuro mejor</h3>
+              <p>El diario nacional visibiliza las crónicas de resiliencia y el impacto socioeconómico de las comunidades agrícolas integradas en la Cordillera.</p>
+              <span class="link-text">Leer artículo en el diario <i class="fas fa-external-link-alt"></i></span>
+            </a>
+
+            <!-- NOTICIA 4: El Mercurio -->
+            <a href="https://elmercurio.com.ec/temas/2023/04/23/apuestan-por-fruta-y-cafe-para-un-futuro-mejor/" target="_blank" rel="noopener noreferrer" class="prensa-item">
+              <div class="prensa-header">
+                <span class="media-badge badge-mercurio">El Mercurio</span>
+                <span class="date"><i class="far fa-calendar-alt"></i> 23 Abr, 2023</span>
+              </div>
+              <h3>Apuestan por fruta y café para un futuro mejor en Dominicana</h3>
+              <p>Cobertura internacional que expone el modelo socioproductivo de la asociación de mujeres y la asistencia técnica de educación popular de CEPOCS.</p>
+              <span class="link-text">Leer artículo en el diario <i class="fas fa-external-link-alt"></i></span>
+            </a>
+
+            <!-- NOTICIA 5: Municipios al Día (Fecha corregida a Tag continuo) -->
+            <a href="https://do.municipiosaldia.com/suroeste/valdesia/san-crist%C3%B3bal/sabana-grande-de-palenque/itemlist/tag/Coopalom" target="_blank" rel="noopener noreferrer" class="prensa-item">
+              <div class="prensa-header">
+                <span class="media-badge badge-municipios">Municipios al Día</span>
+               <span class="date"><i class="far fa-calendar-alt"></i> 26 Ago, 2022</span>
+              </div>
+              <h3>Productores de café negocian sus productos en SD y NY</h3>
+              <p>Seguimiento informativo sobre las iniciativas socioproductivas, el fortalecimiento de las cooperativas comunitarias y el apoyo técnico en la región.</p>
+              <span class="link-text">Leer artículo en el diario <i class="fas fa-external-link-alt"></i></span>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .news-page { background: var(--verde-soft); padding: 50px 0; min-height: 80vh; }
+  .section-title { color: var(--verde); text-align: center; font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800; }
+  .section-sub { text-align: center; max-width: 760px; margin: 0 auto 2rem auto; color: var(--gris); font-size: 0.95rem; }
+  .panel-desc { text-align: center; max-width: 760px; margin: 0 auto 1.5rem auto; color: var(--gris); font-size: 0.95rem; line-height: 1.6; }
+  
+  /* Pestañas Modernizadas */
+  .news-tabs { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; border-bottom: 3px solid #e2e8e4; padding-bottom: 0px; }
+  .tab-btn { background: none; border: none; padding: 0.8rem 1rem; font-family: 'Work Sans', sans-serif; font-weight: 600; color: #999; cursor: pointer; position: relative; font-size: 1.05rem; transition: color 0.2s; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 3px; background: var(--verde); transition: 0.3s; }
+  .tab-btn.active { color: var(--verde); font-weight: 700; }
+  .tab-btn.active::after { width: 100%; }
+  
+  /* Contenedor Principal */
+  .news-container { background: white; padding: 2.5rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e2e8e4; }
+  .news-content-panel { display: none; }
+  .news-content-panel.active { display: block; animation: fadeIn 0.4s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Lista de Prensa */
+  .prensa-lista { display: flex; flex-direction: column; gap: 1.5rem; max-width: 850px; margin: 0 auto; }
+  .prensa-item { text-decoration: none; color: inherit; display: flex; flex-direction: column; background: #fdfdfd; border: 1px solid #e6ede6; border-left: 4px solid #ccc; padding: 1.8rem; border-radius: 20px; transition: 0.25s; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  .prensa-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  
+  /* Cabecera del Artículo */
+  .prensa-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem; }
+  .media-badge { font-size: 0.8rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 6px; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
+  
+  /* Colores de los Badges */
+  .badge-eldinero { background-color: #1a4d3e; } 
+  .badge-efeminista { background-color: #632a7a; } 
+  .badge-listin { background-color: #0056b3; } 
+  .badge-mercurio { background-color: #d32f2f; } 
+  .badge-municipios { background-color: #0288d1; }
+  
+  /* Líneas verticales de color por badge */
+  .prensa-item:has(.badge-eldinero) { border-left-color: #1a4d3e; }
+  .prensa-item:hover:has(.badge-eldinero) { border-left-color: #1a4d3e; }
+  .prensa-item:has(.badge-efeminista) { border-left-color: #632a7a; }
+  .prensa-item:hover:has(.badge-efeminista) { border-left-color: #632a7a; }
+  .prensa-item:has(.badge-listin) { border-left-color: #0056b3; }
+  .prensa-item:hover:has(.badge-listin) { border-left-color: #0056b3; }
+  .prensa-item:has(.badge-mercurio) { border-left-color: #d32f2f; }
+  .prensa-item:hover:has(.badge-mercurio) { border-left-color: #d32f2f; }
+  .prensa-item:has(.badge-municipios) { border-left-color: #0288d1; }
+  .prensa-item:hover:has(.badge-municipios) { border-left-color: #0288d1; }
+  
+  .date { font-size: 0.9rem; color: var(--gris); display: flex; align-items: center; gap: 6px; }
+  
+  /* ¡Títulos en Color Recuperados! */
+  .prensa-item h3 { color: var(--verde); font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem 0; line-height: 1.4; transition: color 0.2s; }
+  .prensa-item:hover h3 { color: var(--naranja); } /* Cambio dinámico a naranja */
+  .prensa-item p { color: var(--gris); font-size: 0.9rem; line-height: 1.5; margin: 0 0 0.8rem 0; }
+  
+  /* Enlaces de lectura dinámicos */
+  .link-text { font-size: 0.85rem; color: var(--verde); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; margin-top: auto; transition: color 0.2s; }
+  .prensa-item:hover .link-text { color: var(--naranja); }
+
+  /* Adaptación Móvil */
+  @media (max-width: 760px) {
+    .news-page { padding: 30px 0; }
+    .section-title { font-size: 1.6rem; }
+    .news-tabs { gap: 0.5rem; }
+    .tab-btn { font-size: 0.95rem; padding: 0.6rem 0.5rem; }
+    .news-container { padding: 1.5rem 1rem; }
+    .prensa-item { padding: 1.2rem; }
+    .prensa-item h3 { font-size: 1.15rem; }
+  }
+</style>
+
+<script is:inline>
+  function switchTab(tabName) {
+    document.querySelectorAll('.news-content-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(`panel-${tabName}`).classList.add('active');
+    document.getElementById(`tab-btn-${tabName}`).classList.add('active');
+  }
+</script>

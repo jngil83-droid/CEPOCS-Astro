@@ -1,0 +1,69 @@
+---
+---
+
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.18); /* suave */
+    z-index: 9999;
+  }
+
+  .modal.show {
+    display: block;
+    animation: fadeIn .25s ease-out;
+  }
+
+  .sheet {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #1e8f4b; /* verde CEPOCS */
+    color: #fff;
+    padding: 12px 18px; /* intermedio */
+    border-radius: 14px 14px 0 0;
+    animation: slideUp .25s ease-out;
+    font-size: 13px;
+    line-height: 1.35;
+    max-height: 35vh; /* intermedio */
+    text-align: left;
+  }
+
+  button {
+    margin-top: 8px;
+    padding: 7px 16px;
+    background: #fff;
+    color: #1e8f4b;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+  @keyframes slideUp { from {transform:translateY(100%)} to {transform:translateY(0)} }
+</style>
+
+<div id="legalModal" class="modal">
+  <div class="sheet">
+    <p>Este sitio web utiliza cookies propias y de terceros para garantizar su correcto funcionamiento y analizar el tráfico.  No será compartida con terceros sin su consentimiento explícito. Puede solicitar la rectificación o eliminación de sus datos escribiendo a cepocscordillera@gmail.com.</p>
+    <p>Este sitio web no utiliza cookies con fines publicitarios, solo las necesarias para su funcionamiento. Al usar este sitio, usted acepta nuestra política de privacidad.</p>
+    <button id="acceptLegal">Aceptar</button>
+  </div>
+</div>
+
+<script is:inline>
+  const modal = document.getElementById("legalModal");
+  const btn = document.getElementById("acceptLegal");
+
+  if (!localStorage.getItem("legalShown")) {
+    setTimeout(() => modal.classList.add("show"), 300);
+  }
+
+  btn.onclick = () => {
+    modal.classList.remove("show");
+    localStorage.setItem("legalShown", "true");
+  };
+</script>

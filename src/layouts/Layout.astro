@@ -1,0 +1,84 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LegalPopup from '../components/LegalPopup.astro';
+const isHome = Astro.url.pathname === "/";
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEPOCS</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+
+    {isHome && <LegalPopup />}
+
+    <!-- Botones flotantes y scripts -->
+    <div class="float-buttons">
+      <a href="https://wa.me/18097107816" target="_blank" class="float-btn btn-whatsapp" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.facebook.com/cepocs.cepocs/" target="_blank" class="float-btn btn-facebook" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/cepocs/" target="_blank" class="float-btn btn-instagram" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <div id="scrollTop" class="scroll-top" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+
+    <script is:inline>
+      // --- Lógica botón volver arriba ---
+      const scrollTop = document.getElementById('scrollTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) scrollTop.classList.add('show');
+        else scrollTop.classList.remove('show');
+      });
+      scrollTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // --- Menú hamburguesa ---
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      const dropdownToggles = document.querySelectorAll('.dropdown > a');
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('show');
+        });
+      }
+
+      if (dropdownToggles.length > 0) {
+        dropdownToggles.forEach((toggle) => {
+          toggle.addEventListener('click', (event) => {
+            if (window.innerWidth <= 760) {
+              event.preventDefault();
+              const dropdown = toggle.parentElement;
+              if (!dropdown) return;
+              const isActive = dropdown.classList.toggle('active');
+              if (isActive) {
+                dropdownToggles.forEach((otherToggle) => {
+                  const otherDropdown = otherToggle.parentElement;
+                  if (otherDropdown && otherDropdown !== dropdown) {
+                    otherDropdown.classList.remove('active');
+                  }
+                });
+              }
+            }
+          });
+        });
+      }
+    </script>
+
+    <script src="/main.js" is:inline></script>
+  </body>
+</html>

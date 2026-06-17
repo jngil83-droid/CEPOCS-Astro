@@ -1,0 +1,101 @@
+<footer class="site-footer">
+  <div class="container footer-content">
+    <p>&copy; {new Date().getFullYear()} CEPOCS | RNC: 4-09-00070-2</p>
+    
+    <nav class="footer-nav">
+      <a href="/" class="text-link">Inicio</a>
+   
+      
+      <div class="footer-icons">
+        <!-- Correo Electrónico  -->
+        <a href="/contacto" aria-label="Correo Electrónico" class="social-icon">
+  <i class="fa-solid fa-envelope"></i>
+</a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/18097107816" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/cepocs.cepocs/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/cepocs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  /* Contenedor principal del footer */
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Barra de navegación interna */
+  .footer-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  /* Enlaces de texto (Inicio / Contacto) */
+  .footer-nav .text-link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nav .text-link:hover {
+    color: #ffffff;
+  }
+
+  /* Grupo de iconos de contacto y redes */
+  .footer-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  /* Estilo general para todos los logos en blanco */
+  .social-icon {
+    color: #ffffff !important; 
+    font-size: 1.25rem;         
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  /* Efecto dinámico al pasar el cursor */
+  .social-icon:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  /* Adaptación para pantallas de celulares */
+  @media (max-width: 680px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+    .footer-nav {
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .footer-icons {
+      gap: 1.5rem;
+    }
+  }
+</style>
