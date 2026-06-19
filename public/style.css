@@ -25,6 +25,18 @@ section { padding: 70px 0; }
 .section-title { font-size: 2.2rem; text-align: center; color: var(--verde); margin-bottom: 1rem; } 
 .section-sub { text-align: center; max-width: 760px; margin: 0 auto 2rem auto; color: var(--gris); font-size: 0.95rem; }
 
+/* --- NUEVA CLASE PARA TEXTOS DESTACADOS --- */
+.texto-destacado {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.8;
+  color: #374141;
+  max-width: 860px;
+  margin: 0 auto 1.8rem auto;
+  text-align: center;
+}
+/* ------------------------------------------ */
+
 .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 999px; text-decoration: none; font-weight: 600; transition: 0.25s; font-size: 0.9rem; border: none; cursor: pointer; } 
 .btn-outline { border: 2px solid white; color: white; background: transparent; } 
 .btn-outline:hover { background: white; color: var(--verde); }
@@ -215,9 +227,8 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
    9. MÓDULO DE HISTORIAS
 ========================================= */
 .historias-main { background: #ffffff; padding-bottom: 5rem; }
-.hero-historias { background: linear-gradient(rgba(15,76,58,0.85), rgba(15,76,58,0.85)), url('https://i.postimg.cc/xj6FHB6j/IMG-20230419-103850818.webp'); background-size: cover; background-position: center; padding: 80px 0; text-align: center; color: white; margin-bottom: 60px; } /* Nota: Hay dos clases .hero-historias en tu código original, combiné o mantuve ambas lógicas */
-.hero-historias { background: linear-gradient(135deg, #1b5e20, #2e7d32); color: white; padding: 4rem 2rem; text-align: center; } /* Segunda declaración que tenías */
-.hero-historias h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.5px; } /* Ajustado según tu última declaración */
+.hero-historias { background: linear-gradient(rgba(15,76,58,0.85), rgba(15,76,58,0.85)), url('https://i.postimg.cc/xj6FHB6j/IMG-20230419-103850818.webp'); background-size: cover; background-position: center; padding: 80px 0; text-align: center; color: white; margin-bottom: 60px; }
+.hero-historias h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.5px; } 
 .hero-historias p { max-width: 700px; margin: 0.5rem auto 0; opacity: 0.9; font-size: 1.1rem; }
 
 .historias-container { max-width: 1200px; margin: 4rem auto 0 auto; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 5rem; }

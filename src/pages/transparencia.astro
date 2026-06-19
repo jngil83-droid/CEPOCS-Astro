@@ -3,23 +3,16 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Transparencia | CEPOCS">
-  <section id="transparencia" class="transparencia" style="padding-top: 80px; padding-bottom: 60px;">
+  <section id="transparencia" class="transparencia">
     <div class="container">
       <h2 class="section-title">TRANSPARENCIA Y RENDICIÓN DE CUENTAS</h2>
-<div class="thanks-message intro-text">
-  En CEPOCS creemos profundamente en la transparencia y la rendición de cuentas, pilares esenciales para <strong>generar confianza</strong>, fortalecer nuestras acciones y garantizar que cada paso que damos responda a principios éticos y responsables.
-  <br>
-  Por ello, compartimos de manera abierta información sobre nuestra organización, nuestro equipo directivo y los principales documentos institucionales. Esta práctica no solo refleja nuestro compromiso con una <strong>gestión clara, ética y accesible</strong>, sino que también reafirma nuestra convicción de que el desarrollo sostenible se construye desde la honestidad, la participación y el acceso a la información.
-  <br>
-  Nuestro objetivo es que cada persona, aliado o institución pueda conocer con claridad cómo trabajamos, qué hacemos y por qué lo hacemos. <strong>La transparencia es, para nosotros, una forma de respeto hacia la comunidad</strong> y una herramienta fundamental para seguir tejiendo redes de confianza, colaboración y transformación social.
-</div>
 
->
-      
-      <div class="board-container" style="margin-bottom: 50px;">
-        <h3 style="text-align: center; margin-bottom: 20px;">
-          <i class="fas fa-users"></i> JUNTA DIRECTIVA (PERÍODO 2024-2027)
-        </h3>
+      <div class="thanks-message texto-destacado">
+        En CEPOCS creemos profundamente en la transparencia y la rendición de cuentas, pilares esenciales para <strong>generar confianza</strong>, fortalecer nuestras acciones y garantizar que cada paso que damos responda a principios éticos y responsables.
+      </div>
+
+      <div class="board-container">
+        <h3><i class="fas fa-users"></i> JUNTA DIRECTIVA (PERÍODO 2024-2027)</h3>
         <div class="board-grid">
           <div class="member-card"><i class="fas fa-user-circle"></i><h4>Reinaldo Disla</h4><p>Presidente</p></div>
           <div class="member-card"><i class="fas fa-user-circle"></i><h4>Nancy Mercado</h4><p>Vicepresidenta</p></div>
@@ -29,205 +22,71 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
+      <div class="thanks-message texto-destacado">
+        Por ello, compartimos de manera abierta información sobre nuestra organización, nuestro equipo directivo y los principales documentos institucionales. Esta práctica no solo refleja nuestro compromiso con una <strong>gestión clara, ética y accesible</strong>, sino que también reafirma nuestra convicción de que el desarrollo sostenible se construye desde la honestidad, la participación y el acceso a la información.
+      </div>
+
       <div class="docs-list">
-        <h3 style="margin-bottom:1.5rem; text-align:center">DOCUMENTOS INSTITUCIONALES</h3>
-        
+        <h3>DOCUMENTOS INSTITUCIONALES</h3>
         <div class="doc-item">
           <div class="doc-info"><i class="fas fa-file-pdf"></i><span>Estatutos Sociales</span></div>
           <a href="https://raw.githubusercontent.com/jngil83-droid/Cepocs/main/assets/documents/000.%20ESTATUTOS.pdf" class="doc-link" target="_blank" rel="noopener noreferrer">PDF</a>
         </div>
-        
         <div class="doc-item">
           <div class="doc-info"><i class="fas fa-file-pdf"></i><span>Registro (CASFL)</span></div>
           <a href="https://raw.githubusercontent.com/jngil83-droid/Cepocs/main/assets/documents/001.%20REGISTRO.pdf" class="doc-link" target="_blank" rel="noopener noreferrer">PDF</a>
         </div>
-        
         <div class="doc-item">
           <div class="doc-info"><i class="fas fa-id-card"></i><span>Identificación Tributaria - RNC</span></div>
           <a href="https://raw.githubusercontent.com/jngil83-droid/Cepocs/main/assets/documents/002.%20TARJETA%20TRIBUTARIA.pdf" class="doc-link" target="_blank" rel="noopener noreferrer">PDF</a>
         </div>
-        
         <div class="doc-item">
           <div class="doc-info"><i class="fas fa-file-pdf"></i><span>Agenda Estratégica 25-35</span></div>
           <a href="https://raw.githubusercontent.com/jngil83-droid/Cepocs/main/assets/documents/003.%20AGENDA%20ESTRAT%C3%89GICA%202025-2035.pdf" class="doc-link" target="_blank" rel="noopener noreferrer">PDF</a>
         </div>
-        
         <div class="doc-item">
           <div class="doc-info"><i class="fas fa-handshake"></i><span>Política Conflicto de Interés</span></div>
           <a href="https://raw.githubusercontent.com/jngil83-droid/Cepocs/main/assets/documents/005.%20POL%C3%8DTICA%20DE%20CONFLICTO%20DE%20INTER%C3%89S.pdf" class="doc-link" target="_blank" rel="noopener noreferrer">PDF</a>
         </div>
-        
         <div class="doc-item">
           <div class="doc-info"><i class="fas fa-balance-scale"></i><span>Código de Ética y Conducta</span></div>
           <a href="https://raw.githubusercontent.com/jngil83-droid/Cepocs/main/assets/documents/006.%20C%C3%93DIGO%20DE%20%C3%89TICA%20Y%20CONDUCTA.pdf" class="doc-link" target="_blank" rel="noopener noreferrer">PDF</a>
         </div>
+      </div>
+
+      <div class="thanks-message texto-destacado"> 
+        Nuestro objetivo es que cada persona, aliado o institución pueda conocer con claridad cómo trabajamos, qué hacemos y por qué lo hacemos. <strong>La transparencia es, para nosotros, una forma de respeto hacia la comunidad</strong> y una herramienta fundamental para seguir tejiendo redes de confianza, colaboración y transformación social.
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* SECCIÓN PRINCIPAL */
-  .transparencia { background: var(--verde-soft); }
+  .transparencia { padding: 80px 0 60px; background: var(--verde-soft); }
   
-  /* JUNTA DIRECTIVA MEJORADA */
-  .board-container { 
-    background: white; 
-    border-radius: 32px; 
-    padding: 2.5rem; 
-    margin-bottom: 3rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    border: 1px solid #e2e8e4;
-  }
+  /* Margen global para que las cajas no se peguen */
+  .thanks-message { margin-bottom: 2rem; }
+
+  /* Estilos para los títulos internos */
+  .board-container h3, .docs-list h3 { text-align: center; margin-bottom: 2rem; font-size: 1.4rem; color: var(--verde); font-weight: 700; }
   
-  .board-container h3 { 
-    font-size: 1.4rem; 
-    color: var(--verde); 
-    font-weight: 700;
-    margin-bottom: 2rem;
-  }
+  .board-container { background: white; border-radius: 32px; padding: 2.5rem; margin-bottom: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8e4; }
+  .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; justify-items: center; }
   
-  .board-grid { 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.5rem;
-    justify-items: center;
-  }
+  .member-card { background: linear-gradient(135deg, var(--verde-soft) 0%, #f7faf7 100%); border-radius: 24px; padding: 1.8rem; text-align: center; border: 2px solid #e2e8e4; transition: 0.3s; width: 100%; max-width: 180px; }
+  .member-card:hover { transform: translateY(-8px); border-color: var(--naranja); box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
+  .member-card i { font-size: 3.5rem; color: var(--verde); margin-bottom: 0.8rem; display: block; }
+  .member-card h4 { font-size: 0.95rem; color: var(--verde); margin: 0.5rem 0; font-weight: 700; }
+  .member-card p { font-size: 0.85rem; color: var(--naranja); font-weight: 600; text-transform: uppercase; margin: 0; }
   
-  .member-card { 
-    background: linear-gradient(135deg, var(--verde-soft) 0%, #f7faf7 100%);
-    border-radius: 24px;
-    padding: 1.8rem;
-    text-align: center;
-    border: 2px solid #e2e8e4;
-    transition: 0.3s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    width: 100%;
-    max-width: 180px;
-  }
-  
-  .member-card:hover { 
-    transform: translateY(-8px);
-    border-color: var(--naranja);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-  }
-  
-  .member-card i { 
-    font-size: 3.5rem;
-    color: var(--verde);
-    margin-bottom: 0.8rem;
-    display: block;
-  }
-  
-  .member-card h4 { 
-    font-size: 0.95rem;
-    color: var(--verde);
-    margin: 0.5rem 0;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-  
-  .member-card p { 
-    font-size: 0.85rem;
-    color: var(--naranja);
-    font-weight: 600;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
-  /* DOCUMENTOS MEJORADO */
-  .docs-list { 
-    background: white;
-    border-radius: 32px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    border: 1px solid #e2e8e4;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  .docs-list h3 { 
-    font-size: 1.4rem;
-    color: var(--verde);
-    font-weight: 700;
-    margin-bottom: 2rem;
-  }
-  
-  .doc-item { 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1.5rem;
-    border-bottom: 1px solid #f0f0f0;
-    transition: 0.25s;
-    border-radius: 16px;
-  }
-  
-  .doc-item:last-child { border-bottom: none; }
-  
-  .doc-item:hover { 
-    background: #fafbf9;
-    border-radius: 16px;
-  }
-  
-  .doc-info { 
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-  }
-  
-  .doc-info i { 
-    font-size: 1.5rem;
-    color: var(--naranja);
-    width: 40px;
-    text-align: center;
-  }
-  
-  .doc-info span { 
-    color: var(--verde);
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-  
-  .doc-link { 
-    background: var(--naranja);
-    color: white;
-    padding: 0.7rem 1.4rem;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 700;
-    transition: 0.25s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-  }
-  
-  .doc-link::after { content: ' ↓'; }
-  
-  .doc-link:hover { 
-    background: #c47a1f;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(217,140,43,0.3);
-  }
-  
-  /* RESPONSIVE */
+  .docs-list { background: white; border-radius: 32px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8e4; max-width: 900px; margin: 0 auto 2rem auto; }
+  .doc-item { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem; border-bottom: 1px solid #f0f0f0; }
+  .doc-info { display: flex; align-items: center; gap: 12px; }
+  .doc-info i { font-size: 1.5rem; color: var(--naranja); width: 40px; }
+  .doc-info span { color: var(--verde); font-weight: 600; }
+  .doc-link { background: var(--naranja); color: white; padding: 0.7rem 1.4rem; border-radius: 20px; text-decoration: none; font-weight: 700; transition: 0.25s; }
+  .doc-link:hover { background: #c47a1f; transform: translateY(-2px); }
+
   @media (max-width: 760px) {
-    .board-container { padding: 1.5rem; margin-bottom: 2rem; }
-    .board-container h3 { font-size: 1.1rem; }
-    .board-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .member-card { padding: 1.2rem; max-width: none; }
-    .member-card i { font-size: 2.5rem; }
-    
-    .docs-list { padding: 1.5rem; }
-    .docs-list h3 { font-size: 1.1rem; }
-    .doc-item { padding: 1rem; }
-    .doc-info span { font-size: 0.85rem; }
-    .doc-link { padding: 0.6rem 1rem; font-size: 0.75rem; }
-  }
-</style>
+    .board-grid { grid-template-columns: repeat(2, 1fr); }
+    .doc-item { flex-wrap: wrap
