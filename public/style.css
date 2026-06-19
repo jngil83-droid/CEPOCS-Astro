@@ -186,6 +186,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 /* =========================================
    8. MULTIMEDIA (FOTOS, VIDEOS, LIGHTBOX)
 ========================================= */
+
 .multimedia { background: white; }
 .grid-multimedia { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 20px; }
 .card-foto { border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
@@ -221,33 +222,6 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .nav-next { right: 20px; }
 
 .hidden-photo, .hidden-video { display: none; }
-
-
-/* =========================================
-   9. MÓDULO DE HISTORIAS
-========================================= */
-.historias-main { background: #ffffff; padding-bottom: 5rem; }
-.hero-historias { background: linear-gradient(rgba(15,76,58,0.85), rgba(15,76,58,0.85)), url('https://i.postimg.cc/xj6FHB6j/IMG-20230419-103850818.webp'); background-size: cover; background-position: center; padding: 80px 0; text-align: center; color: white; margin-bottom: 60px; }
-.hero-historias h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.5px; } 
-.hero-historias p { max-width: 700px; margin: 0.5rem auto 0; opacity: 0.9; font-size: 1.1rem; }
-
-.historias-container { max-width: 1200px; margin: 4rem auto 0 auto; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 5rem; }
-.historia-bloque { display: flex; gap: 2rem; margin-bottom: 4rem; align-items: center; }
-.historia-bloque.reverse { flex-direction: row-reverse; }
-
-.historia-foto img { width: 100%; max-width: 450px; height: 350px; object-fit: cover; border-radius: 20px; box-shadow: var(--shadow); }
-.historia-texto { background: var(--verde-soft); padding: 2rem; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid #e2e8e4; }
-.historia-texto h2 { color: var(--verde); margin-bottom: 0.5rem; }
-.historia-meta { color: var(--gris); font-size: 0.9rem; margin-bottom: 1rem; }
-.historia-texto blockquote { font-size: 1.3rem; font-weight: 700; color: var(--verde); border-left: 6px solid var(--naranja); padding-left: 1rem; margin: 1.2rem 0; }
-
-.historia-full { display: flex; flex-direction: column; gap: 2rem; }
-.historia-full-img { width: 100%; height: 480px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.historia-full-texto { background: white; margin-top: -60px; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; }
-.historia-etiqueta { color: #2e7d32; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-.historia-full-texto h2 { font-size: 2rem; color: #111; margin: 0.5rem 0 1rem 0; line-height: 1.2; }
-.historia-intro { color: #444; font-size: 1.1rem; line-height: 1.6; border-left: 3px solid #2e7d32; padding-left: 1rem; font-weight: 500; }
-.historia-full-texto blockquote { background-color: #f1f8e9; border-left: 4px solid #1b5e20; padding: 1.5rem; margin: 1rem 0; font-style: italic; font-size: 1.2rem; color: #1b5e20; line-height: 1.6; text-align: center; border-radius: 0 8px 8px 0; }
 
 
 /* =========================================
@@ -349,4 +323,67 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   /* Historias */
   .historia-bloque, .historia-bloque.reverse { flex-direction: column; }
   .historia-foto img { max-width: 100%; height: 260px; }
+}
+/* === MULTIMEDIA ESTILO CONTACTO === */
+
+.multimedia {
+  background: #fefcf7; /* mismo fondo suave que contacto */
+  padding: 60px 0;
+}
+
+.multimedia .section-title {
+  color: var(--verde);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.multimedia .section-sub {
+  max-width: 760px;
+  margin: 0 auto 2rem auto;
+  color: #4a5b52;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Contenedor tipo tarjeta */
+.multimedia-container {
+  background: white;
+  border-radius: 28px;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+  border: 1px solid #e6ede6;
+}
+
+/* Tarjetas de fotos */
+.card-foto {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #e6ede6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card-foto:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+/* Ajuste de grid para que se vea más ordenado */
+.grid-multimedia {
+  padding: 10px;
+  gap: 1.5rem;
+}
+
+/* Títulos de secciones internas */
+.fotos-generales,
+.videos-section {
+  background: white;
+  border-radius: 28px;
+  padding: 2rem;
+  margin-top: 3rem;
+  border: 1px solid #e6ede6;
+  box-shadow: var(--shadow);
 }
