@@ -5,13 +5,53 @@ import LegalPopup from '../components/LegalPopup.astro';
 const isHome = Astro.url.pathname === "/";
 ---
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEPOCS</title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO -->
+  <title>CEPOCS – Centro de Educación Popular de la Cordillera Septentrional</title>
+  <meta name="description" content="CEPOCS trabaja junto a comunidades rurales de la Cordillera Septentrional para promover educación popular, desarrollo sostenible y fortalecimiento comunitario.">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="CEPOCS – Desarrollo Comunitario y Educación Popular">
+  <meta property="og:description" content="Proyectos, noticias, multimedia y transparencia del trabajo de CEPOCS.">
+  <meta property="og:image" content="https://cepocs.pages.dev/og-image.jpg">
+  <meta property="og:url" content="https://cepocs.pages.dev/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CEPOCS – Desarrollo Comunitario y Educación Popular">
+  <meta name="twitter:description" content="Iniciativas, proyectos y acciones de CEPOCS en la Cordillera Septentrional.">
+  <meta name="twitter:image" content="https://cepocs.pages.dev/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Preload de tu CSS principal -->
+  <link rel="preload" href="/style.css" as="style">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Font Awesome NO bloqueante -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  </noscript>
+
+  <!-- Preload de fuentes FA -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Scripts no bloqueantes -->
+  <script src="/main.js" defer></script>
+
+  <!-- Sitemaps -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="sitemap" type="text/plain" href="/sitemap.txt">
+  <link rel="sitemap" type="application/xml" href="/sitemap-index.xml">
+</head>
+
   <body>
     <Header />
     <slot />
