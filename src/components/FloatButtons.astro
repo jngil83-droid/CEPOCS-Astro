@@ -1,25 +1,26 @@
 <div class="float-buttons">
   <a href="https://wa.me/18097107816" target="_blank" rel="noopener noreferrer" class="float-btn btn-whatsapp" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
   </a>
   <a href="https://www.facebook.com/cepocs.cepocs/" target="_blank" rel="noopener noreferrer" class="float-btn btn-facebook" aria-label="Facebook">
-    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-facebook-f" aria-hidden="true"></i>
   </a>
-  <div id="scrollTop" class="scroll-top" aria-label="Volver arriba">
-    <i class="fas fa-arrow-up"></i>
-  </div>
+  <a href="https://www.instagram.com/cepocs/" target="_blank" rel="noopener noreferrer" class="float-btn btn-instagram" aria-label="Instagram">
+    <i class="fab fa-instagram" aria-hidden="true"></i>
+  </a>
+  <button type="button" id="scrollTop" class="scroll-top" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
 </div>
 
 <script is:inline>
   const scrollTop = document.getElementById('scrollTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      scrollTop.classList.add('show');
-    } else {
-      scrollTop.classList.remove('show');
-    }
-  });
-  scrollTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  if (scrollTop) {
+    window.addEventListener('scroll', () => {
+      scrollTop.classList.toggle('show', window.scrollY > 300);
+    });
+    scrollTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 </script>

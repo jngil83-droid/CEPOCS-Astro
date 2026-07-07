@@ -1,23 +1,20 @@
 <header class="header-mejorado">
   <div class="container">
-    <nav class="nav-mejorado">
-
-      <!-- LOGO -->
+    <nav class="nav-mejorado" aria-label="Navegación principal">
       <div class="logo">
         <a href="/">
-          <img src="https://i.postimg.cc/TYxJqDDj/Logo-favicon-CEPOCS.webp" alt="Logo CEPOCS" width="55" height="55" loading="lazy">
+          <img src="https://i.postimg.cc/TYxJqDDj/Logo-favicon-CEPOCS.webp" alt="Logo CEPOCS" width="55" height="55" loading="lazy" decoding="async">
         </a>
         <p>Centro de Educación Popular Cordillera Septentrional</p>
       </div>
 
-      <!-- ICONO MÓVIL -->
-      <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+      <button class="menu-icon" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú de navegación">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
 
-      <!-- MENÚ -->
       <ul class="nav-links" id="navLinks">
-
         <li class="dropdown">
-          <a href="/">INICIO <i class="fas fa-chevron-down"></i></a>
+          <a href="/">INICIO <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
           <div class="dropdown-content">
             <a href="/#inicio">Quiénes somos</a>
             <a href="/#ejes">Ejes estratégicos</a>
@@ -30,7 +27,7 @@
         <li><a href="/noticias">NOTICIAS</a></li>
 
         <li class="dropdown">
-          <a href="/multimedia">MULTIMEDIA <i class="fas fa-chevron-down"></i></a>
+          <a href="/multimedia">MULTIMEDIA <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
           <div class="dropdown-content">
             <a href="/multimedia#fotos">Fotos</a>
             <a href="/multimedia#videos">Videos</a>
@@ -38,8 +35,44 @@
         </li>
 
         <li><a href="/contacto">CONTACTO</a></li>
-
       </ul>
     </nav>
   </div>
 </header>
+
+<script is:inline>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  const dropdownToggles = document.querySelectorAll('.dropdown > a');
+
+  const setMenuState = (expanded) => {
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
+    navLinks?.classList.toggle('show', expanded);
+  };
+
+  menuToggle?.addEventListener('click', () => {
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    setMenuState(!expanded);
+  });
+
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener('click', (event) => {
+      if (window.innerWidth <= 760) {
+        event.preventDefault();
+        const dropdown = toggle.parentElement;
+        if (!dropdown) return;
+        const isActive = dropdown.classList.toggle('active');
+        if (isActive) {
+          dropdownToggles.forEach((otherToggle) => {
+            const otherDropdown = otherToggle.parentElement;
+            if (otherDropdown && otherDropdown !== dropdown) {
+              otherDropdown.classList.remove('active');
+            }
+          });
+        }
+      }
+    });
+  });
+</script>

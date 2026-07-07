@@ -83,7 +83,7 @@ const videos = [
   }
   </div>
 
-  <button id="togglePhotos" class="load-more-btn" aria-expanded="false" aria-controls="galleryGrid">
+  <button id="togglePhotos" class="load-more-btn" type="button" aria-expanded="false" aria-controls="galleryGrid">
     Ver más fotografías
   </button>
 
@@ -124,7 +124,7 @@ const videos = [
 }
 </div>
 
-<button id="toggleVideos" class="load-more-btn">
+<button id="toggleVideos" class="load-more-btn" type="button" aria-expanded="false" aria-controls="videoGrid">
   Ver más vídeos
 </button>
   </section>
@@ -214,7 +214,7 @@ document.addEventListener('keydown', (e)=>{
 .multimedia-hero{
   padding:20px 20px 30px;
   text-align:center;
- linear-gradient(135deg, var(--verde), #0d3a2b);
+  background:linear-gradient(135deg, var(--verde), #0d3a2b);
 }
 
 .hero-tag{
