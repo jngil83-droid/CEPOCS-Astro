@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ProyectosSection from '../components/ProyectosSection.astro';
 ---
 
 <Layout>
@@ -76,19 +77,13 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <section id="proyectos" class="proyectos">
+  <section id="proyectos-cta" class="proyectos-cta">
     <div class="container">
-      <h2 class="section-title">NUESTROS PROYECTOS</h2>
-      <div class="section-sub">
-<div class="thanks-message intro-text">
-  Una muestra de nuestra trayectoria en cooperación internacional y desarrollo local, con intervenciones en múltiples sectores como la agroecología, la igualdad de género, la agroindustria comunitaria y la formación.
-<br>
-  Todos nuestros proyectos se desarrollan poniendo en el centro a las personas y al medio ambiente, promoviendo procesos participativos que fortalecen las comunidades de la Cordillera Septentrional y favorecen un desarrollo más justo, sostenible e inclusivo.
-</div>
-
+      <h2 class="section-title">Nuestros Proyectos</h2>
+      <p class="section-sub">Explora nuestro trabajo en agroecología, igualdad de género y desarrollo local. Consulta la lista completa de proyectos y sus resultados.</p>
+      <div style="text-align:center; margin-top:1.2rem;">
+        <a href="/proyectos" class="btn btn-primary">Ver Proyectos</a>
       </div>
-      <div id="proyectosContainer" class="proyectos-fotos-grid"></div>
-      <button id="toggleProyectosBtn" class="ver-mas-btn">Ver más</button>
     </div>
   </section>
 
