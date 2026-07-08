@@ -341,7 +341,8 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 /* =========================================
    12. ELEMENTOS FLOTANTES
 ========================================= */
-.float-buttons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; } 
+.float-buttons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease; } 
+.float-buttons.show { opacity: 1; visibility: visible; transform: translateY(0); } 
 .float-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.15); color: white; font-size: 1.8rem; text-decoration: none; } 
 .float-btn:hover { transform: scale(1.1); } 
 .btn-whatsapp { background: #25D366; } 
@@ -351,7 +352,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .btn-instagram { background: linear-gradient(45deg, #f09433, #d62976, #962fbf); } 
 .btn-instagram:hover { opacity: 0.9; }
 
-.scroll-top { position: fixed; bottom: 200px; right: 20px; background: var(--naranja); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: 0.3s; z-index: 999; box-shadow: 0 4px 12px rgba(0,0,0,0.15); } 
+.scroll-top { position: fixed; bottom: 200px; right: 20px; background: var(--naranja); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease; z-index: 999; box-shadow: 0 4px 12px rgba(0,0,0,0.15); } 
 .scroll-top.show { opacity: 1; visibility: visible; } 
 .scroll-top:hover { background: #c47a1f; transform: translateY(-2px); }
 #scrollTop { margin-top: 10px; }
@@ -402,8 +403,9 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   .contact-info-general { flex-direction: column; align-items: flex-start; } 
 
   /* Botones Flotantes */
+  .float-buttons { left: 50%; right: auto; bottom: 14px; gap: 10px; transform: translateX(-50%); } 
   .float-btn { width: 45px; height: 45px; font-size: 1.5rem; } 
-  .scroll-top { bottom: 190px; } 
+  .scroll-top { left: 50%; right: auto; bottom: 190px; transform: translateX(-50%); } 
 
   /* Historias */
   .historia-bloque, .historia-bloque.reverse { flex-direction: column; }

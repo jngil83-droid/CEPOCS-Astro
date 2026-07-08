@@ -1,4 +1,4 @@
-<div class="float-buttons">
+<div id="floatButtons" class="float-buttons">
   <a href="https://wa.me/18097107816" target="_blank" rel="noopener noreferrer" class="float-btn btn-whatsapp" aria-label="WhatsApp">
     <i class="fab fa-whatsapp" aria-hidden="true"></i>
   </a>
@@ -15,12 +15,24 @@
 
 <script is:inline>
   const scrollTop = document.getElementById('scrollTop');
+  const floatButtons = document.getElementById('floatButtons');
+
+  const toggleFloatingButtons = () => {
+    const shouldShow = window.scrollY > 300;
+    if (floatButtons) {
+      floatButtons.classList.toggle('show', shouldShow);
+    }
+    if (scrollTop) {
+      scrollTop.classList.toggle('show', shouldShow);
+    }
+  };
+
   if (scrollTop) {
-    window.addEventListener('scroll', () => {
-      scrollTop.classList.toggle('show', window.scrollY > 300);
-    });
     scrollTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  toggleFloatingButtons();
+  window.addEventListener('scroll', toggleFloatingButtons, { passive: true });
 </script>
