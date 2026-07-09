@@ -14,12 +14,13 @@ interface Props {
 const {
   title = 'CEPOCS – Centro de Educación Popular de la Cordillera Septentrional',
   description = 'CEPOCS trabaja junto a comunidades rurales de la Cordillera Septentrional para promover educación popular, desarrollo sostenible y fortalecimiento comunitario.',
-  image = '/og-image.jpg',
+  image = '/images/Logo.png',
   canonical,
 } = Astro.props as Props;
 
 const isHome = Astro.url.pathname === '/';
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://cepocs.pages.dev').toString();
+const imageUrl = new URL(image, Astro.site ?? 'https://cepocs.pages.dev').toString();
 ---
 <html lang="es">
 <head>
@@ -34,7 +35,7 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'htt
 
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
-  <meta property="og:image" content={image}>
+  <meta property="og:image" content={imageUrl}>
   <meta property="og:url" content={canonicalUrl}>
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -42,7 +43,7 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'htt
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
-  <meta name="twitter:image" content={image}>
+  <meta name="twitter:image" content={imageUrl}>
 
   <link rel="icon" href="/favicon.ico">
 
@@ -60,7 +61,6 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'htt
 
   <script src="/main.js" defer></script>
 
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="sitemap" type="text/plain" href="/sitemap.txt">
   <link rel="sitemap" type="application/xml" href="/sitemap-index.xml">
 </head>
