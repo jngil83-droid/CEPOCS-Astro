@@ -74,8 +74,9 @@ const videos = [
   {
     fotos.map((foto, index) => (
       <figure
-        class={`gallery-card ${index === 0 || index === 5 ? 'gallery-card-featured' : ''} ${index === 5 ? 'gallery-card-featured-right' : ''} ${index >= 8 ? 'hidden-photo' : ''}`}
+        class={`gallery-card ${index % 5 === 0 ? 'gallery-card-featured gallery-card-featured-right' : ''} ${index >= 10 ? 'hidden-photo' : ''}`}
         data-index={index}
+        style={index % 5 === 0 ? `--featured-row: ${Math.floor(index / 5) * 2 + 1};` : undefined}
       >
         <button class="gallery-thumb" aria-label={`Abrir: ${foto.titulo}`}>
           <img
@@ -104,6 +105,7 @@ const videos = [
       <div class="lb-media">
         <img id="lbImage" src="" alt="" />
         <p id="lbCaption" class="lb-caption"></p>
+        <p id="lbCounter" class="lb-counter" aria-live="polite"></p>
       </div>
       <button id="lbNext" class="lb-nav lb-next" aria-label="Siguiente imagen">▶</button>
     </div>
@@ -135,6 +137,14 @@ const videos = [
 <button id="toggleVideos" class="load-more-btn" type="button" aria-expanded="false" aria-controls="videoGrid">
   Ver más vídeos
 </button>
+  </section>
+
+  <section class="multimedia-cta" aria-labelledby="multimedia-cta-title">
+    <p>El trabajo continúa junto a las comunidades.</p>
+    <h2 id="multimedia-cta-title">Conoce nuestros proyectos</h2>
+    <div class="multimedia-cta-actions">
+      <a href="/proyectos" class="btn btn-primary">Ver proyectos</a>
+    </div>
   </section>
 
 </main>
@@ -178,6 +188,7 @@ const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
 const lightbox = document.getElementById('lightbox');
 const lbImage = document.getElementById('lbImage');
 const lbCaption = document.getElementById('lbCaption');
+const lbCounter = document.getElementById('lbCounter');
 const lbClose = document.getElementById('lbClose');
 const lbPrev = document.getElementById('lbPrev');
 const lbNext = document.getElementById('lbNext');
@@ -191,6 +202,7 @@ function openLightbox(index){
   lbImage.src = url;
   lbImage.alt = alt;
   lbCaption.textContent = alt || `Fotografía ${index+1}`;
+  lbCounter.textContent = `Foto ${index + 1} de ${thumbs.length}`;
   lightbox.setAttribute('aria-hidden', 'false');
   lightbox.classList.add('open');
   currentIndex = index;
@@ -247,6 +259,11 @@ document.addEventListener('keydown', (e)=>{
   padding:20px 20px 10px;
 }
 
+.multimedia-cta{margin:70px 0 30px;padding:48px 24px;text-align:center;border-radius:20px;background:var(--verde-soft);border:1px solid #e2ece1}
+.multimedia-cta p{margin:0 0 4px;color:var(--gris);font-weight:600}
+.multimedia-cta h2{margin:0 0 20px;color:var(--verde);font-size:clamp(1.55rem,3vw,2.15rem)}
+.multimedia-cta-actions{display:flex;justify-content:center}
+
 .multimedia-hero{
   padding:80px 0 40px;
   text-align:center;
@@ -289,7 +306,7 @@ document.addEventListener('keydown', (e)=>{
   background:#fff;
 }
 
-.gallery-card-featured{grid-column:span 2;grid-row:span 2}
+.gallery-card-featured{grid-column:span 2;grid-row:var(--featured-row) / span 2}
 .gallery-card-featured-right{grid-column:3 / span 2}
 
 .gallery-card img{
@@ -316,6 +333,7 @@ document.addEventListener('keydown', (e)=>{
 .lb-media{flex:1;display:flex;flex-direction:column;align-items:center}
 .lb-media img{max-width:100%;max-height:80vh;border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .lb-caption{color:#fff;margin-top:12px;text-align:center}
+.lb-counter{color:#dbe8dd;margin:2px 0 0;font-size:.9rem;font-weight:700}
 .lb-close,.lb-nav{position:absolute;background:rgba(255,255,255,.06);border:0;color:#fff;padding:.6rem .8rem;border-radius:6px;cursor:pointer}
 .lb-close{right:6px;top:6px}
 .lb-prev{left:6px}
@@ -369,6 +387,7 @@ body.lightbox-active{overflow:hidden}
   }
 
   .gallery-card-featured-right{grid-column:span 2}
+  .gallery-card-featured{grid-row:span 2}
 
   .video-grid{
     grid-template-columns:1fr;
