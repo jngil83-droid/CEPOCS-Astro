@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const fotos = [
+const fotoUrls = [
   "https://i.postimg.cc/zDHRSgjS/IMG-20230418-151548891.jpg",
   "https://i.postimg.cc/yYPmwNKv/Captura-de-pantalla-2026-05-22-235256.png",
   "https://i.postimg.cc/Xvsm8HHg/IMG-20260520-WA0001.jpg",
@@ -31,6 +31,13 @@ const fotos = [
   "https://i.postimg.cc/Gh62gRXb/Whats-App-Image-2026-05-18-at-20-32-25s.jpg"
 ];
 
+const fotoTitulos = ['Entrega de agradecimiento a la AECID por el apoyo a Frutada', 'Denuncia de CEPOCS y FEMUCOS al feminicidio en RD', 'Apoyo a organizaciones a cacaoteras', 'Mujeres preparando frutas para ser procesadas', 'Supervision de Coordinador de Prodiversa al equipamiento de procesadora de Café', 'Muestra de jugos elaborados por Frutada (proyecto de AECID)', 'Infraestructuras creadas en proyecto de AECID para procesadora de jugos "Frutada"', 'Firma de acuerdo entre INTABACO, FEMUCOS y CEPOCS', 'Inicio de construcción de Procesadora de Café en la Cayota', 'Camioneta con guanábana​s para su procesamiento', 'Muestra de jugos elaborados por Frutada (proyecto de AECID)', 'Participación en manifestación contra feminicidios', 'Recopilación de información en proceso de identificación', 'Beneficiaria de proyecto de cacao (AECID)', 'Beneficiarias de proyecto de cacao (AECID)', 'Beneficiario de proyecto de cacao (AECID)', 'Coordinador de Prodiversa junto a beneficiarias en la procesadora de Café', 'Reunión de FEMUCOS junto a mujeres y entidades socias', 'Visita de la AECID a FRUTADA', 'Mujer añadiendo etiquetas a jugos para su venta', 'Visita de la AECID a campos de café', 'Visita de la AECID a inicio de construcción de procesadora de café', 'Vicepresidenta de CEPOCS en un discurso', 'Muestra de Café Paradero', 'Beneficiaria en su conuco', 'Mujeres descargando insumos para sus conucos', 'Reunión de proyecto en Montecristi (Manos Unidas)'];
+const fotos = fotoUrls.map((url, index) => ({
+  url,
+  titulo: fotoTitulos[index] ?? 'Memorias de CEPOCS',
+  categoria: index < 8 ? 'Comunidad y territorio' : 'Archivo CEPOCS'
+}));
+
 const videos = [
   { url: "https://www.youtube.com/embed/4Ph5ZhSizh8", titulo: "Contra los feminicidios" },
   { url: "https://www.youtube.com/embed/kCRBCTF6XY4", titulo: "Prueba Café Paradero" },
@@ -51,6 +58,10 @@ const videos = [
     <div class="thanks-message texto-destacado">
       Fotografías, videos y testimonios que reflejan el trabajo realizado por CEPOCS junto a las comunidades rurales de la Cordillera Septentrional.
     </div>
+    <nav class="media-shortcuts" aria-label="Explorar multimedia">
+      <a href="#fotos">Explorar fotografías <span aria-hidden="true">↓</span></a>
+      <a href="#videos">Ver videos <span aria-hidden="true">↓</span></a>
+    </nav>
   </div>
 </section>
 
@@ -61,20 +72,21 @@ const videos = [
 
   <div id="galleryGrid" class="gallery-grid">
   {
-    fotos.map((url, index) => (
+    fotos.map((foto, index) => (
       <figure
-        class={`gallery-card ${index >= 8 ? 'hidden-photo' : ''}`}
+        class={`gallery-card ${index === 0 || index === 5 ? 'gallery-card-featured' : ''} ${index === 5 ? 'gallery-card-featured-right' : ''} ${index >= 8 ? 'hidden-photo' : ''}`}
         data-index={index}
       >
-        <button class="gallery-thumb" aria-label={`Abrir fotografía ${index + 1}`}>
+        <button class="gallery-thumb" aria-label={`Abrir: ${foto.titulo}`}>
           <img
-            src={url}
-            alt={`Fotografía CEPOCS ${index + 1}`}
+            src={foto.url}
+            alt={foto.titulo}
             loading="lazy"
             decoding="async"
           />
+          <span class="gallery-overlay"><span>{foto.categoria}</span><strong>{foto.titulo}</strong></span>
         </button>
-        <figcaption class="sr-only">Fotografía CEPOCS {index + 1}</figcaption>
+        <figcaption class="sr-only">{foto.titulo}, {foto.categoria}</figcaption>
       </figure>
     ))
   }
@@ -85,7 +97,7 @@ const videos = [
   </button>
 
   <!-- Lightbox modal -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Visor de imágenes">
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lbCaption">
     <div class="lightbox-inner">
       <button id="lbClose" class="lb-close" aria-label="Cerrar">✕</button>
       <button id="lbPrev" class="lb-nav lb-prev" aria-label="Imagen anterior">◀</button>
@@ -108,12 +120,11 @@ const videos = [
     <article
       class={`video-card ${index >= 6 ? 'hidden-video' : ''}`}
     >
-      <iframe
-        src={video.url}
-        title={video.titulo}
-        loading="lazy"
-        allowfullscreen>
-      </iframe>
+      <button class="video-preview" type="button" data-video-url={video.url} aria-label={`Reproducir: ${video.titulo}`}>
+        <img src={`https://i.ytimg.com/vi/${video.url.split('/').pop()}/hqdefault.jpg`} alt="" loading="lazy" decoding="async" />
+        <span class="play-icon" aria-hidden="true">▶</span>
+        <span class="play-label">Reproducir</span>
+      </button>
 
       <h3>{video.titulo}</h3>
     </article>
@@ -133,7 +144,7 @@ const photoBtn = document.getElementById('togglePhotos');
 const galleryGrid = document.getElementById('galleryGrid');
 let photosOpen = false;
 photoBtn?.addEventListener('click', () => {
-  document.querySelectorAll('.hidden-photo').forEach(el => el.style.display = photosOpen ? 'none' : 'block');
+  document.querySelectorAll('.hidden-photo').forEach(el => el.classList.toggle('is-visible', !photosOpen));
   photosOpen = !photosOpen;
   photoBtn.textContent = photosOpen ? 'Ver menos fotografías' : 'Ver más fotografías';
   photoBtn.setAttribute('aria-expanded', String(photosOpen));
@@ -142,9 +153,23 @@ photoBtn?.addEventListener('click', () => {
 const videoBtn = document.getElementById('toggleVideos');
 let videosOpen = false;
 videoBtn?.addEventListener('click', () => {
-  document.querySelectorAll('.hidden-video').forEach(el => el.style.display = videosOpen ? 'none' : 'block');
+  document.querySelectorAll('.hidden-video').forEach(el => el.classList.toggle('is-visible', !videosOpen));
   videosOpen = !videosOpen;
   videoBtn.textContent = videosOpen ? 'Ver menos vídeos' : 'Ver más vídeos';
+  videoBtn.setAttribute('aria-expanded', String(videosOpen));
+});
+
+// YouTube only loads after the visitor chooses a video.
+document.querySelectorAll('.video-preview').forEach((preview) => {
+  preview.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.className = 'video-frame';
+    iframe.src = `${preview.dataset.videoUrl}?autoplay=1&rel=0`;
+    iframe.title = preview.closest('.video-card').querySelector('h3').textContent;
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    preview.replaceWith(iframe);
+  });
 });
 
 // Lightbox
@@ -156,8 +181,10 @@ const lbClose = document.getElementById('lbClose');
 const lbPrev = document.getElementById('lbPrev');
 const lbNext = document.getElementById('lbNext');
 let currentIndex = 0;
+let lastFocusedElement;
 
 function openLightbox(index){
+  const wasOpen = lightbox.classList.contains('open');
   const url = thumbs[index].querySelector('img').src;
   const alt = thumbs[index].querySelector('img').alt || '';
   lbImage.src = url;
@@ -166,6 +193,8 @@ function openLightbox(index){
   lightbox.setAttribute('aria-hidden', 'false');
   lightbox.classList.add('open');
   currentIndex = index;
+  if (!wasOpen) lastFocusedElement = document.activeElement;
+  document.body.classList.add('lightbox-active');
   lbClose.focus();
 }
 
@@ -173,6 +202,8 @@ function closeLightbox(){
   lightbox.setAttribute('aria-hidden', 'true');
   lightbox.classList.remove('open');
   lbImage.src = '';
+  document.body.classList.remove('lightbox-active');
+  lastFocusedElement?.focus();
 }
 
 function showNext(){
@@ -196,6 +227,13 @@ document.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape') closeLightbox();
   if(e.key === 'ArrowRight') showNext();
   if(e.key === 'ArrowLeft') showPrev();
+  if(e.key === 'Tab') {
+    const controls = [lbClose, lbPrev, lbNext];
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if(e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    if(!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
 });
 
 </script>
@@ -219,6 +257,10 @@ document.addEventListener('keydown', (e)=>{
   margin-bottom:1rem;
 }
 
+.media-shortcuts{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.media-shortcuts a{display:inline-flex;gap:8px;align-items:center;padding:10px 18px;border:1px solid rgba(15,76,58,.22);border-radius:999px;color:var(--verde);font-weight:700;text-decoration:none;background:#fff;transition:.2s}
+.media-shortcuts a:hover{background:var(--verde);border-color:var(--verde);color:#fff;transform:translateY(-2px)}
+
 .section-block{
   margin-top:70px;
 }
@@ -233,21 +275,25 @@ document.addEventListener('keydown', (e)=>{
 
 .gallery-grid{
   display:grid;
-  grid-template-columns:
-  repeat(auto-fill,minmax(260px,1fr));
-  gap:22px;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  grid-auto-rows:190px;
+  gap:16px;
 }
 
 .gallery-card{
+  position:relative;
   overflow:hidden;
   border-radius:16px;
   box-shadow:0 8px 24px rgba(0,0,0,.08);
   background:#fff;
 }
 
+.gallery-card-featured{grid-column:span 2;grid-row:span 2}
+.gallery-card-featured-right{grid-column:3 / span 2}
+
 .gallery-card img{
   width:100%;
-  height:260px;
+  height:100%;
   object-fit:cover;
   display:block;
   transition:.45s;
@@ -258,7 +304,11 @@ document.addEventListener('keydown', (e)=>{
 }
 
 /* Lightbox styles */
-.gallery-thumb{border:0;background:transparent;padding:0;display:block;width:100%;height:100%;text-align:left}
+.gallery-thumb{position:relative;border:0;background:transparent;padding:0;display:block;width:100%;height:100%;text-align:left;cursor:zoom-in;overflow:hidden}
+.gallery-overlay{position:absolute;inset:auto 0 0;padding:34px 18px 16px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.76));display:flex;flex-direction:column;opacity:0;transition:.25s}
+.gallery-overlay span{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#f8d4a7}.gallery-overlay strong{font-size:1rem;line-height:1.25}
+.gallery-thumb:hover .gallery-overlay,.gallery-thumb:focus-visible .gallery-overlay{opacity:1}
+.hidden-photo.is-visible,.hidden-video.is-visible{display:block}
 .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.75);z-index:3000}
 .lightbox.open{display:flex}
 .lightbox-inner{position:relative;max-width:1100px;width:95%;max-height:90%;display:flex;align-items:center;gap:12px}
@@ -269,6 +319,7 @@ document.addEventListener('keydown', (e)=>{
 .lb-close{right:6px;top:6px}
 .lb-prev{left:6px}
 .lb-next{right:6px}
+body.lightbox-active{overflow:hidden}
 
 
 .video-grid{
@@ -285,11 +336,17 @@ document.addEventListener('keydown', (e)=>{
   box-shadow:0 8px 24px rgba(0,0,0,.08);
 }
 
-.video-card iframe{
+.video-preview{
   width:100%;
   height:230px;
   border:none;
 }
+:global(.video-frame){display:block;width:100%;height:230px;border:0}
+.video-preview{position:relative;display:block;padding:0;cursor:pointer;overflow:hidden;background:var(--verde)}
+.video-preview img{width:100%;height:100%;object-fit:cover;opacity:.8;transition:.25s}
+.video-preview:hover img{opacity:.62;transform:scale(1.03)}
+.play-icon{position:absolute;top:50%;left:50%;display:grid;place-items:center;width:58px;height:58px;transform:translate(-50%,-50%);border-radius:50%;background:var(--naranja);color:#fff;padding-left:3px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.play-label{position:absolute;right:14px;bottom:12px;color:#fff;font-size:.8rem;font-weight:700;text-shadow:0 1px 3px #000}
 
 .video-card h3{
   padding:18px;
@@ -307,10 +364,7 @@ document.addEventListener('keydown', (e)=>{
   .gallery-grid{
     grid-template-columns:1fr 1fr;
     gap:14px;
-  }
-
-  .gallery-card img{
-    height:180px;
+    grid-auto-rows:160px;
   }
 
   .video-grid{
@@ -323,7 +377,11 @@ document.addEventListener('keydown', (e)=>{
 
   .gallery-grid{
     grid-template-columns:1fr;
+    grid-auto-rows:230px;
   }
+
+  .gallery-card-featured{grid-column:span 1;grid-row:span 1}
+  .gallery-card-featured-right{grid-column:span 1}
 
 }
 </style>
