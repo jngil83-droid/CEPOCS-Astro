@@ -78,6 +78,15 @@ function initAccessibleMenu() {
     setMenuState(!expanded);
   });
 
+  document.addEventListener('click', (event) => {
+    if (window.innerWidth > 760 || menuToggle?.getAttribute('aria-expanded') !== 'true') return;
+
+    const target = event.target;
+    if (target instanceof Node && !navLinks?.contains(target) && !menuToggle?.contains(target)) {
+      setMenuState(false);
+    }
+  });
+
   navLinks?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       const isTopLevelToggle = link.classList.contains('nav-link') && link.parentElement?.classList.contains('has-sub');

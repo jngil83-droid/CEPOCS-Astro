@@ -13,8 +13,8 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body { font-family: 'Work Sans', sans-serif; color: var(--texto); background: white; line-height: 1.6; overflow-x: hidden; max-width: 100%; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body { font-family: 'Work Sans', sans-serif; color: var(--texto); background: white; line-height: 1.6; overflow-x: clip; max-width: 100%; }
 a { color: inherit; }
 .container { width: min(1200px, calc(100% - 2rem)); margin: auto; }
 
@@ -90,15 +90,15 @@ section { padding: 70px 0; }
 /* =========================================
    3. HEADER Y NAVEGACIÓN
 ========================================= */
-header { position: sticky; top: 0; z-index: 999; background: rgba(15,76,58,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.08); }
-header.scroll-activo { background: rgba(15,76,58,0.85); padding: 0.4rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15); backdrop-filter: blur(14px); transition: 0.3s ease; }
+header { position: sticky; top: 0; z-index: 999; background: rgba(15,76,58,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.08); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+header.scroll-activo { background: rgba(15,76,58,0.85); box-shadow: 0 4px 12px rgba(0,0,0,0.15); backdrop-filter: blur(14px); }
 nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; flex-wrap: wrap; gap: 1rem; }
 
 /* New header layout */
 .site-header { background: rgba(15,76,58,0.98); }
-.site-header .header-inner { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; padding: 0.45rem 0; min-height: 62px; }
+.site-header .header-inner { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; padding: 0.45rem 0; min-height: 62px; transition: min-height 0.25s ease, padding 0.25s ease; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
-.brand-logo { display: block; border-radius: 8px; width: 38px !important; height: 38px !important; object-fit: contain; flex-shrink: 0; }
+.brand-logo { display: block; border-radius: 8px; width: 38px !important; height: 38px !important; object-fit: contain; flex-shrink: 0; transition: width 0.25s ease, height 0.25s ease; }
 .brand-text { color: white; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .hamburger { background: transparent; border: 0; color: white; display: none; padding: 6px; border-radius: 8px; }
@@ -107,7 +107,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .site-nav { display: flex; flex: 1 1 auto; justify-content: center; }
 .nav-list { display: flex; gap: 0.9rem; align-items: center; list-style: none; margin: 0; padding: 0; }
 .nav-item { position: relative; }
-.nav-link { position: relative; color: white; text-decoration: none; font-weight: 700; padding: 10px 8px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; }
+.nav-link { position: relative; color: white; text-decoration: none; font-weight: 700; padding: 10px 8px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; transition: color 0.2s ease, padding 0.25s ease; }
 .nav-link[aria-current="page"]::after { content: ''; position: absolute; right: 8px; bottom: 4px; left: 8px; height: 2px; border-radius: 999px; background: var(--naranja); }
 .nav-link:hover, .nav-link:focus { color: var(--naranja); }
 .chev { opacity: 0.9; transition: transform 180ms ease; }
@@ -126,6 +126,14 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .nav-actions { display: flex; align-items: center; gap: 10px; }
 .nav-cta { padding: 8px 12px; font-size: 0.82rem; }
 .nav-cta[aria-current="page"] { background: #c47a1f; box-shadow: 0 0 0 2px rgba(255,255,255,0.6); }
+
+@media (min-width: 761px) {
+   .site-header.scroll-activo .header-inner { min-height: 50px; padding: 0.2rem 0; }
+   .site-header.scroll-activo .brand-logo { width: 32px !important; height: 32px !important; }
+   .site-header.scroll-activo .site-nav { padding: 0.25rem 0; }
+   .site-header.scroll-activo .nav-link { padding-top: 7px; padding-bottom: 7px; }
+   .site-header.scroll-activo .nav-cta { padding-top: 6px; padding-bottom: 6px; }
+}
 
 
 /* =========================================
