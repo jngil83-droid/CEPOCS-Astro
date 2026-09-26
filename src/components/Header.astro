@@ -1,3 +1,7 @@
+---
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="Inicio - CEPOCS">
@@ -17,7 +21,7 @@
     <nav id="navLinks" class="site-nav" aria-label="Navegación principal">
       <ul class="nav-list">
         <li class="nav-item has-sub">
-          <a class="nav-link" href="/" aria-expanded="false" aria-controls="submenu-inicio" aria-haspopup="true">INICIO
+          <a class="nav-link" href="/" aria-current={currentPath === '/' ? 'page' : undefined} aria-expanded="false" aria-controls="submenu-inicio" aria-haspopup="true">INICIO
             <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M1 1L6 6L11 1" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -27,12 +31,12 @@
             <li><a href="/#ejes">Ejes estratégicos</a></li>
           </ul>
         </li>
-           <li class="nav-item"><a class="nav-link" href="/aliados">ENTIDADES ALIADAS</a></li>
-        <li class="nav-item"><a class="nav-link" href="/transparencia">TRANSPARENCIA</a></li>
-        <li class="nav-item"><a class="nav-link" href="/proyectos">PROYECTOS</a></li>
+           <li class="nav-item"><a class="nav-link" href="/aliados" aria-current={currentPath === '/aliados' ? 'page' : undefined}>ENTIDADES ALIADAS</a></li>
+        <li class="nav-item"><a class="nav-link" href="/transparencia" aria-current={currentPath === '/transparencia' ? 'page' : undefined}>TRANSPARENCIA</a></li>
+        <li class="nav-item"><a class="nav-link" href="/proyectos" aria-current={currentPath === '/proyectos' ? 'page' : undefined}>PROYECTOS</a></li>
          
         <li class="nav-item has-sub">
-          <a class="nav-link" href="/multimedia" aria-expanded="false" aria-controls="submenu-multimedia" aria-haspopup="true">MULTIMEDIA
+          <a class="nav-link" href="/multimedia" aria-current={currentPath === '/multimedia' ? 'page' : undefined} aria-expanded="false" aria-controls="submenu-multimedia" aria-haspopup="true">MULTIMEDIA
             <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M1 1L6 6L11 1" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -42,12 +46,12 @@
             <li><a href="/multimedia#videos">Videos</a></li>
           </ul>
         </li>
-            <li class="nav-item"><a class="nav-link" href="/noticias">NOTICIAS</a></li>
+            <li class="nav-item"><a class="nav-link" href="/noticias" aria-current={currentPath === '/noticias' ? 'page' : undefined}>NOTICIAS</a></li>
       </ul>
     </nav>
 
     <div class="nav-actions">
-      <a href="/contacto" class="btn btn-primary nav-cta">CONTACTO</a>
+      <a href="/contacto" class="btn btn-primary nav-cta" aria-current={currentPath === '/contacto' ? 'page' : undefined}>CONTACTO</a>
     </div>
   </div>
   <div id="menuOverlay" class="menu-overlay" aria-hidden="true"></div>
