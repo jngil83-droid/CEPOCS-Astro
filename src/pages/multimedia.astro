@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
-const fotoUrls = [
+const fallbackFotoUrls = [
   "https://i.postimg.cc/zDHRSgjS/IMG-20230418-151548891.jpg",
   "https://i.postimg.cc/yYPmwNKv/Captura-de-pantalla-2026-05-22-235256.png",
   "https://i.postimg.cc/Xvsm8HHg/IMG-20260520-WA0001.jpg",
@@ -31,12 +33,45 @@ const fotoUrls = [
   "https://i.postimg.cc/Gh62gRXb/Whats-App-Image-2026-05-18-at-20-32-25s.jpg"
 ];
 
+const localMediaDir = join(process.cwd(), 'public', 'multimedia');
+const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif']);
+
+const localFotoUrls = (() => {
+  try {
+    return readdirSync(localMediaDir, { withFileTypes: true })
+      .filter((entry) => entry.isFile())
+      .map((entry) => entry.name)
+      .filter((name) => imageExtensions.has(name.slice(name.lastIndexOf('.')).toLowerCase()))
+      .sort((a, b) => a.localeCompare(b))
+      .map((name) => `/multimedia/${name}`);
+  } catch {
+    return [];
+  }
+})();
+
+const fotoUrls = [...fallbackFotoUrls, ...localFotoUrls];
+
 const fotoTitulos = ['Entrega de agradecimiento a la AECID por el apoyo a Frutada', 'Denuncia de CEPOCS y FEMUCOS al feminicidio en RD', 'Apoyo a organizaciones a cacaoteras', 'Mujeres preparando frutas para ser procesadas', 'Supervision de Coordinador de Prodiversa al equipamiento de procesadora de Café', 'Muestra de jugos elaborados por Frutada (proyecto de AECID)', 'Infraestructuras creadas en proyecto de AECID para procesadora de jugos "Frutada"', 'Firma de acuerdo entre INTABACO, FEMUCOS y CEPOCS', 'Inicio de construcción de Procesadora de Café en la Cayota', 'Camioneta con guanábana​s para su procesamiento', 'Muestra de jugos elaborados por Frutada (proyecto de AECID)', 'Participación en manifestación contra feminicidios', 'Recopilación de información en proceso de identificación', 'Beneficiaria de proyecto de cacao (AECID)', 'Beneficiarias de proyecto de cacao (AECID)', 'Beneficiario de proyecto de cacao (AECID)', 'Coordinador de Prodiversa junto a beneficiarias en la procesadora de Café', 'Reunión de FEMUCOS junto a mujeres y entidades socias', 'Visita de la AECID a FRUTADA', 'Mujer añadiendo etiquetas a jugos para su venta', 'Visita de la AECID a campos de café', 'Visita de la AECID a inicio de construcción de procesadora de café', 'Vicepresidenta de CEPOCS en un discurso', 'Muestra de Café Paradero', 'Beneficiaria en su conuco', 'Mujeres descargando insumos para sus conucos', 'Reunión de proyecto en Montecristi (Manos Unidas)'];
-const fotos = fotoUrls.map((url, index) => ({
-  url,
-  titulo: fotoTitulos[index] ?? 'Fotografía',
-  categoria: index < 8 ? 'Comunidad y territorio' : 'Archivo CEPOCS'
-}));
+
+const titulosLocales = {
+  'IMG_20261023_104049 (2).jpg': 'Café Paradero y Vinos Mamá Nancy',
+  'IMG_20261023_122843 (2).jpg': 'Muestra del café',
+  'IMG_20261023_122855 (2).jpg': 'Muestra del café',
+  'WhatsApp Image 2026-11-08 at 20.55.01.jpeg': 'Procesadora de cacao financiada por la AECID en construcción'
+};
+
+const fotos = fotoUrls.map((url, index) => {
+  const fileName = url.split('/').pop() || '';
+  const isLocal = url.startsWith('/multimedia/');
+
+  return {
+    url,
+    titulo: isLocal
+      ? (titulosLocales[fileName] ?? (fileName.replace(/\.[^/.]+$/, '').replace(/[-_]+/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase()) || 'Fotografía'))
+      : (fotoTitulos[index] ?? 'Fotografía'),
+    categoria: index < 8 ? 'Comunidad y territorio' : 'Archivo CEPOCS'
+  };
+});
 
 const videos = [
   { url: "https://www.youtube.com/embed/N72JEB1JwYU", titulo: "FCIL y el CEPOCS impulsan segunda fase de proyecto a favor de productoras/es"},
